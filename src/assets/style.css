@@ -25,6 +25,15 @@ body{
     font-size: 1.4rem;
     font-weight: 400;
 }
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+}
+.flex-end{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
 header{
     width: 100%;
     height: 100%;
@@ -32,19 +41,28 @@ header{
     display: flex;
     justify-content: space-around;
 }
+.logo h1{
+    padding: 1rem 0;
+}
 .header__links{
     width: 60%;
     font-weight: 500;
+    display: flex;
 }
 .header__links--link{
-    margin: .8rem;
+    margin: 0 0.8rem;
     line-height: 3.5;
-    padding: 1.2rem .3rem;
+    border-bottom: 4px solid #fff;
+    align-self: flex-end;
     text-decoration: none;
     color: var(--color-text);
 }
 .is-active{
     border-bottom: 4px solid var(--color-secondary);
+}
+.profile{
+    display: flex;
+    align-items: center;
 }
 .dropdown{
     width: 2rem;
@@ -63,6 +81,9 @@ header{
 form{
     display: flex;
     flex-wrap: wrap;
+}
+.form-grid{
+    display: flex;
 }
 .form-group{
     margin: 1rem 2rem;
@@ -86,7 +107,6 @@ form{
 .formSubmit{
     width: 12rem;
     height: 4rem;
-    margin: 1rem 2rem;
     background-color: var(--color-secondary);
     color: var(--color-bg);
     border: 1px solid var(--color-secondary);
@@ -98,7 +118,7 @@ form{
     transform: translateY(3px);
 }
 .products{
-    padding: 2rem;
+    padding: 2rem 0;
 }
 .products .item:first-child{
     font-weight: 500;
@@ -142,23 +162,23 @@ form{
 .item .removeItem{
     color: var(--color-secondary);
 }
-.itemImage{
+.item__image{
     width: 5rem;
     height: 5rem;
     cursor: pointer;
 }
-.itemPicture{
+.item__image--img{
     display: block;
     max-width: 100%;
     height: auto;
 }
-.itemPicture:hover{
+.item__picture:hover{
     transform: scale(2.5);
 }
-.itemImage,
-.itemName,
-.itemDescription,
-.itemPrice,
+.item__image,
+.item__name,
+.item__description,
+.item__price,
 .removeItem{
     margin: 0 1rem;
     padding: 1rem .5rem;
