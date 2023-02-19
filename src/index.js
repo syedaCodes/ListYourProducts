@@ -1,15 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './assets/style.css';
-import Layout from './Components/Layout';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 
-const App = () => {
-    
-    return(
-        <React.Fragment>
-            <Layout />
-        </React.Fragment>
-    );
-}
+//Get a reference to the div with ID root
+const el = document.getElementById('root');
 
-ReactDOM.render(<App />, document.querySelector('#app'));
+//Tell React to take control of that element
+const root  = ReactDOM.createRoot(el);
+
+root.render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </React.StrictMode>
+)

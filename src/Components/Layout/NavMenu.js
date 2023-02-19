@@ -1,23 +1,24 @@
-import { NavLink } from 'react-router-dom';
+import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 const NavMenu = () => {
   return (
-    <div className="header__links">
-        <NavLink 
+    <Fragment>
+      <div className="header__links">
+        <Link 
             to="/"
-            activeClassName="is-active"
-            className="header__links--link"
-            exact >
+            // activeClass="is-active"
+            className="header__links--link">
             Home
-        </NavLink>
-        <NavLink 
+        </Link>
+        <Link 
             to="/add-products" 
-            activeClassName="is-active" 
-            className="header__links--link"
-            exact >
-            Manage Products
-        </NavLink>
-    </div>
+            // activeClass="is-active" 
+            className="header__links--link">
+            Add Products
+        </Link>
+      </div>
+    </Fragment>
   )
 }
 
