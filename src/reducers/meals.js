@@ -1,4 +1,4 @@
-import GET_MEALS from "../actions/types";
+import { GET_MEALS } from "../actions/types";
 
 const INITIAL_STATE = {
     meals: []

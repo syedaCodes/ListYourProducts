@@ -1,5 +1,5 @@
 import mealsService from "../services/meals.service";
-import GET_MEALS from "./types";
+import { GET_MEALS } from "./types";
 
 export const getMeals = () => (dispatch) => {
     return mealsService.getMeals().then(
