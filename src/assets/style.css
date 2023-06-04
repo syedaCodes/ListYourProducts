@@ -1,11 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
-:root{
-    --color-bg: #fffffb;
-    --color-text: #444444;
-    --color-secondary: #39b5e9;
-    --color-grey-light: #eeeeee;
-    --color-grey-dark: #c7c7c7;
-}
 *,
 *::after,
 *::before{
@@ -24,20 +16,4 @@ body{
     color: var(--color-text);
     font-size: 1.4rem;
     font-weight: 400;
-}
-.grid{
-    display: flex;
-    flex-wrap: wrap;
-}
-.flex-end{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-}
-header{
-    width: 100%;
-    height: 100%;
-    border: 1px solid var(--color-grey-light);
-    display: flex;
-    justify-content: space-around;
 }
