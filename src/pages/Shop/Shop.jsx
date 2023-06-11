@@ -1,7 +1,7 @@
 const Shop = () => {
     return (
         <div>
-            <h1>I am a shop</h1>
+            <h1>The shop</h1>
         </div>
     );
 };
