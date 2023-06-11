@@ -2,11 +2,12 @@
     width: 35rem;
     height: 30rem;
     margin: 2rem;
-    border-radius: 2rem;
+    border: 2px solid $border-color-primary;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all .5s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+    transition: all 10s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+    // transition: all .5s ease-in-out;
     cursor: pointer;
 
     &.hats{
@@ -44,7 +45,7 @@
         padding: 2rem;
         border: 1px solid $border-color-primary;
         text-align: center;
-        background-color: $bg-dark-transparent;
+        background-color: $bg-light-transparent;
 
         & h2{
             margin-bottom: 2rem;
