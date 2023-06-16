@@ -1,0 +1,39 @@
+.signup{
+    width: 80%;
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 0 2.1rem;
+
+    &__heading{
+        margin-bottom: 2.4rem;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+
+        & label{
+            padding: 1rem 0;
+        }
+
+        & input{
+            width: 45.6rem;
+            padding: 1rem;
+            border-radius: .8rem;
+            border: 1px solid #909090;
+            outline: none;
+            margin-bottom: 1.2rem;
+        }
+
+        button{
+            margin: 2rem 0;
+            height: 5.6rem;
+            border: none;
+            background-color: $color-secondary;
+            color: $color-primary;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.6rem;
+        }
+    }
+}
