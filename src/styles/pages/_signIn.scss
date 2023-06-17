@@ -1,0 +1,16 @@
+.signin{
+    width: 80%;
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 0 2.1rem;
+
+    .btn-primary:nth-of-type(1){
+        background-color: #02528f;
+        border: 1px solid #02528f;
+
+        &:hover{
+            color: #02528f;
+            background-color: $color-primary;
+        }
+    }
+}

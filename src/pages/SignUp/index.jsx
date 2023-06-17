@@ -3,6 +3,8 @@ import {
     createDocumentFromAuth,
     createUserAuthWithEmailandPassword,
 } from "../../utils/firebase/firebase.utils";
+import CustomInputField from "../../layouts/CustomInputField";
+import Button from "../../layouts/Button";
 
 const defaultFields = {
     displayName: "",
@@ -59,26 +61,27 @@ const SignUp = () => {
                 Sign Up with your email and password
             </h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="displayName">Display Name</label>
-                <input
+                <CustomInputField
+                    label="Display Name"
+                    id="displayName"
                     type="text"
                     name="displayName"
                     onChange={handleChange}
                     value={displayName}
                     required
                 />
-
-                <label htmlFor="email">Email</label>
-                <input
+                <CustomInputField
+                    label="Email"
+                    id="email"
                     type="email"
                     name="email"
                     onChange={handleChange}
                     value={email}
                     required
                 />
-
-                <label htmlFor="password">Password</label>
-                <input
+                <CustomInputField
+                    label="Password"
+                    id="password"
                     type="password"
                     name="password"
                     onChange={handleChange}
@@ -86,8 +89,9 @@ const SignUp = () => {
                     required
                 />
 
-                <label htmlFor="confirmPassword">Confirm Password</label>
-                <input
+                <CustomInputField
+                    label="Confirm Password"
+                    id="confirmPassword"
                     type="password"
                     name="confirmPassword"
                     onChange={handleChange}
@@ -95,7 +99,9 @@ const SignUp = () => {
                     required
                 />
 
-                <button type="submit">Sign Up</button>
+                <Button buttonType="btn-primary" type="submit">
+                    Sign Up
+                </Button>
             </form>
         </div>
     );
