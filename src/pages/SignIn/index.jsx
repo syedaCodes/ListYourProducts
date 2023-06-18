@@ -1,13 +1,11 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CustomInputField from "../../layouts/CustomInputField";
 import Button from "../../layouts/Button";
 import {
-    createDocumentFromAuth,
     signInUserAuthWithEmailandPassword,
     signInWithGooglePopup,
 } from "../../utils/firebase/firebase.utils";
-import { useState, useContext } from "react";
-import { UserContext } from "../../contexts/user.context";
 
 const defaultFields = {
     email: "",
@@ -15,8 +13,6 @@ const defaultFields = {
 };
 
 const SignIn = () => {
-    const { setCurrentUser } = useContext(UserContext);
-
     const [formFields, setFormFields] = useState(defaultFields);
 
     const { email, password } = formFields;
@@ -33,12 +29,7 @@ const SignIn = () => {
         if (!formFields) return;
 
         try {
-            const { user } = await signInUserAuthWithEmailandPassword(
-                email,
-                password
-            );
-
-            setCurrentUser(user);
+            await signInUserAuthWithEmailandPassword(email, password);
             resetFormFields();
         } catch (error) {
             switch (error.code) {
@@ -61,8 +52,7 @@ const SignIn = () => {
     };
 
     const logGoogleUser = async () => {
-        const { user } = await signInWithGooglePopup();
-        await createDocumentFromAuth(user);
+        await signInWithGooglePopup();
     };
 
     return (

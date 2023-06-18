@@ -2,6 +2,7 @@ import { Outlet, Link } from "react-router-dom";
 import Icon from "../../assets/sprite.svg";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user.context";
+import { signOutUser } from "../../utils/firebase/firebase.utils";
 
 const Navigation = () => {
     const { currentUser } = useContext(UserContext);
@@ -19,7 +20,7 @@ const Navigation = () => {
                         Shop
                     </Link>
                     {currentUser ? (
-                        <Link className="navigation__menu--li">Sign Out</Link>
+                        <span onClick={signOutUser}>Sign Out</span>
                     ) : (
                         <Link className="navigation__menu--li" to="/sign-in">
                             Sign In
