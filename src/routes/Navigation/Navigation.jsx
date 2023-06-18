@@ -1,7 +1,11 @@
 import { Outlet, Link } from "react-router-dom";
 import Icon from "../../assets/sprite.svg";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/user.context";
 
 const Navigation = () => {
+    const { currentUser } = useContext(UserContext);
+
     return (
         <>
             <div className="navigation">
@@ -14,9 +18,13 @@ const Navigation = () => {
                     <Link className="navigation__menu--li" to="/shop">
                         Shop
                     </Link>
-                    <Link className="navigation__menu--li" to="/sign-in">
-                        Sign In
-                    </Link>
+                    {currentUser ? (
+                        <Link className="navigation__menu--li">Sign Out</Link>
+                    ) : (
+                        <Link className="navigation__menu--li" to="/sign-in">
+                            Sign In
+                        </Link>
+                    )}
                 </div>
             </div>
             <Outlet />
