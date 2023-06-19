@@ -1,0 +1,41 @@
+.product{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    &__card{
+        height: 100%;
+        margin: 2rem;
+        position: relative;
+
+        & img{
+            display: block;
+        }
+
+        &--footer{
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        & button.btn-secondary{
+            width: 80%;
+            display: inline-block;
+            position: absolute;
+            left: 50%;
+            bottom: 20%;
+            transform: translate(-50%, -20%);
+        }
+
+        &:hover {
+            img {
+              opacity: 0.8;
+            }
+        
+            button.btn-secondary {
+              opacity: 0.85;
+            }
+        }
+    }
+}
