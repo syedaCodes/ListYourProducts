@@ -12,9 +12,11 @@
     }
 
     &__menu{
+        display: flex;
+        align-items: center;
        
-        a{
-            margin: 0 1rem;
+        & > *{
+            margin: 0 .9rem;
         }
 
         span{
