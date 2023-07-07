@@ -4,7 +4,7 @@ import Icon from "../../assets/sprite.svg";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
-import CartDropdown from "../../components/cartDropdown";
+import CartDropdown from "../../components/cartList";
 import { CartContext } from "../../contexts/cart.context";
 
 const Navigation = () => {

@@ -3,7 +3,7 @@ import Icon from "../assets/sprite.svg";
 import { CartContext } from "../contexts/cart.context";
 
 const CartIcon = () => {
-    const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+    const { isCartOpen, setIsCartOpen, count } = useContext(CartContext);
 
     const toggleIsCartOpen = () => setIsCartOpen(!isCartOpen);
 
@@ -12,7 +12,7 @@ const CartIcon = () => {
             <svg>
                 <use xlinkHref={`${Icon}#shopping-cart`}></use>
             </svg>
-            <span className="cartIcon__count">0</span>
+            <span className="cartIcon__count">{count}</span>
         </div>
     );
 };
