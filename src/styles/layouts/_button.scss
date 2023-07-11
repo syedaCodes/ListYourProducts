@@ -30,4 +30,10 @@
             color: $color-primary;
         }
     }
+
+    &.btn-tertiary{
+        width: fit-content;
+        height: fit-content;
+        background-color: transparent;
+    }
 }

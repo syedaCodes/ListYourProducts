@@ -1,4 +1,4 @@
-const cartListItem = ({ cartItem }) => {
+const CartListItem = ({ cartItem }) => {
     const { name, imageUrl, price, quantity } = cartItem;
     return (
         <div className="item">
@@ -7,10 +7,10 @@ const cartListItem = ({ cartItem }) => {
             </div>
             <div className="item__details">
                 <h3 className="item__details--h3">{name}</h3>
-                <span className="item__details--span">{`Qty: ${quantity} x ${price}`}</span>
+                <span className="item__details--span">{`Qty: ${quantity} x $${price}`}</span>
             </div>
         </div>
     );
 };
 
-export default cartListItem;
+export default CartListItem;
