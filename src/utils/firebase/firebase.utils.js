@@ -8,7 +8,14 @@ import {
     signOut,
     onAuthStateChanged,
 } from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc,
+    collection, //to create a collection in firestore
+    writeBatch, //the name states to write to the collection
+} from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -40,6 +47,26 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
 //create a firestore database instance
 export const db = getFirestore();
+
+export const addCollectionAndDocuments = async (
+    collectionKey,
+    objectsToAdd
+) => {
+    //create a collection in the db with the collectionKey
+    const collectionRef = collection(db, collectionKey);
+
+    //create a batch inside the collection
+    const batch = writeBatch(db);
+
+    objectsToAdd?.forEach((object) => {
+        //create the object inside collection
+        const docRef = doc(collectionRef, object.title.toLowerCase());
+        batch.set(docRef, object);
+    });
+
+    await batch.commit();
+    console.log("done");
+};
 
 export const createDocumentFromAuth = async (
     userAuth,
