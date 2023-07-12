@@ -23,9 +23,10 @@
         height: 100%;
         display: flex;
         flex-direction: column;
+        max-height: 23.5rem;
 
         &.scrollable{
-            max-height: calc(100% - 7.6rem);
+            max-height: 23.5rem;
             overflow-y: auto;
         }
 

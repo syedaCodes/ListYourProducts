@@ -1,15 +1,23 @@
 import { useContext } from "react";
-import { ProductsContext } from "../../contexts/products.context";
+import { CategoriesContext } from "../../contexts/categories.context";
 import ProductCard from "../../components/productCard";
 
 const Shop = () => {
-    const { products } = useContext(ProductsContext);
+    const { categoriesMap } = useContext(CategoriesContext);
     return (
-        <div className="product">
-            {products?.map((product) => (
-                <ProductCard key={product.id} product={product} />
+        <>
+            {/* categoriesMap is an object that has titles holding arrays {title: [], title: []} */}
+            {Object.keys(categoriesMap).map((title) => (
+                <div className="productWrapper" key={title}>
+                    <h2>{title}</h2>
+                    <div className="product">
+                        {categoriesMap[title]?.map((product) => (
+                            <ProductCard key={product.id} product={product} />
+                        ))}
+                    </div>
+                </div>
             ))}
-        </div>
+        </>
     );
 };
 

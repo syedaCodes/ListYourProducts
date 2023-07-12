@@ -1,7 +1,18 @@
+.productWrapper{
+    
+    h2{
+        text-transform: capitalize;
+        border-bottom: 1px dashed $border-color-secondary;
+        padding: 2rem 0;
+        margin: 0 2.5rem;
+        font-weight: 700;
+    }
+
+}
 .product{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 
     &__card{
