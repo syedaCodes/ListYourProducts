@@ -7,7 +7,6 @@ const useScrollbar = (ref, dependency) => {
         const checkScrollbar = () => {
             const element = ref.current;
             const hasScrollbar = element.scrollHeight > element.clientHeight;
-            console.log(element.clientHeight);
             setHasScrollbar(hasScrollbar);
         };
 

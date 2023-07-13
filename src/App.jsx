@@ -3,7 +3,7 @@ import Navigation from "./routes/Navigation/Navigation";
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import Shop from "./pages/Shop";
+import Shop from "./routes/Shop";
 import Checkout from "./pages/Checkout";
 
 const App = () => {
@@ -11,10 +11,10 @@ const App = () => {
         <Routes>
             <Route path="/" element={<Navigation />}>
                 <Route index element={<Home />} />
-                <Route path="/shop" element={<Shop />} />
-                <Route path="/sign-in" element={<SignIn />} />
-                <Route path="/sign-up" element={<SignUp />} />
-                <Route path="/checkout" element={<Checkout />} />
+                <Route path="shop/*" element={<Shop />} />
+                <Route path="sign-in" element={<SignIn />} />
+                <Route path="sign-up" element={<SignUp />} />
+                <Route path="checkout" element={<Checkout />} />
             </Route>
         </Routes>
     );

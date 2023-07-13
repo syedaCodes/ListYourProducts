@@ -15,7 +15,7 @@ const Navigation = () => {
     return (
         <>
             <div className="navigation">
-                <Link className="navigation__logo">
+                <Link className="navigation__logo" to="/">
                     <svg className="navigation__logo--svg">
                         <use xlinkHref={`${Icon}#crown`}></use>
                     </svg>
