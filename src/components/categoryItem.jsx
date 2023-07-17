@@ -1,11 +1,19 @@
-const CategoryItem = ({ category }) => {
-    const categoryClass = category.toLowerCase();
+// import { useNavigate } from "react-router-dom";
+
+const CategoryItem = ({ title, url }) => {
+    const categoryClass = title.toLowerCase();
+
+    // const navigate = useNavigate();
+    // const handleNavigate = (redirectTo) => navigate(redirectTo);
 
     return (
-        <div className={`clothing__type ${categoryClass}`}>
+        <div
+            className={`clothing__type ${categoryClass}`}
+            // onClick={handleNavigate}
+        >
             <div className="clothing__type--category">
-                <h2 title={category}>{category}</h2>
-                <a href="/">Shop Now</a>
+                <h2 title={title}>{title}</h2>
+                <a href={url}>Shop Now</a>
             </div>
         </div>
     );

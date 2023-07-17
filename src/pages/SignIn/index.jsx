@@ -31,6 +31,7 @@ const SignIn = () => {
         try {
             await signInUserAuthWithEmailandPassword(email, password);
             resetFormFields();
+            navigate("/");
         } catch (error) {
             switch (error.code) {
                 case "auth/wrong-password":
@@ -52,7 +53,8 @@ const SignIn = () => {
     };
 
     const logGoogleUser = async () => {
-        await signInWithGooglePopup();
+        const response = await signInWithGooglePopup();
+        response?._tokenResponse?.emailVerified && navigate("/");
     };
 
     return (
