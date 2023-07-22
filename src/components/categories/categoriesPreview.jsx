@@ -1,4 +1,4 @@
-import ProductCard from "./productCard";
+import ProductCard from "../productCard";
 
 const CategoriesPreview = ({ title, products }) => {
     return (

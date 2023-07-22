@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import Icon from "../assets/sprite.svg";
-import { CartContext } from "../contexts/cart.context";
+import Icon from "../../assets/sprite.svg";
+import { CartContext } from "../../contexts/cart.context";
 
 const CartIcon = () => {
     const { isCartOpen, setIsCartOpen, count } = useContext(CartContext);

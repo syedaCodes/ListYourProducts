@@ -1,10 +1,10 @@
 import { Outlet, Link } from "react-router-dom";
-import CartIcon from "../../components/cartIcon";
+import CartIcon from "../../components/cart/cartIcon";
 import Icon from "../../assets/sprite.svg";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
-import CartDropdown from "../../components/cartList";
+import CartDropdown from "../../components/cart/cartList";
 import { CartContext } from "../../contexts/cart.context";
 
 const Navigation = () => {

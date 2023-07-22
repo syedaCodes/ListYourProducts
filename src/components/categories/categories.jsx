@@ -5,27 +5,27 @@ const Categories = () => {
         {
             id: "1",
             title: "Hats",
-            route: "shop/hats",
+            route: "/shop/hats",
         },
         {
             id: "2",
             title: "Jackets",
-            route: "shop/jackets",
+            route: "/shop/jackets",
         },
         {
             id: "3",
             title: "Sneakers",
-            route: "shop/sneakers",
+            route: "/shop/sneakers",
         },
         {
             id: "4",
             title: "Womens",
-            route: "shop/womens",
+            route: "/shop/womens",
         },
         {
             id: "5",
             title: "Mens",
-            route: "shop/mens",
+            route: "/shop/mens",
         },
     ];
 

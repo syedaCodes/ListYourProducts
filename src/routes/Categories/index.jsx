@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { CategoriesContext } from "../../contexts/categories.context";
-import CategoriesPreview from "../../components/categoriesPreview";
+import CategoriesPreview from "../../components/categories/categoriesPreview";
 
 const Categories = () => {
     const { categoriesMap } = useContext(CategoriesContext);

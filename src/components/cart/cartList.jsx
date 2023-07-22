@@ -1,8 +1,8 @@
 import { useContext, useRef } from "react";
-import Button from "../layouts/Button";
-import useScrollbar from "../hooks/useScrollbar";
+import Button from "../../layouts/Button";
+import useScrollbar from "../../hooks/useScrollbar";
 import CartListItem from "./cartListItem";
-import { CartContext } from "../contexts/cart.context";
+import { CartContext } from "../../contexts/cart.context";
 import { useNavigate } from "react-router-dom";
 
 const CartList = () => {

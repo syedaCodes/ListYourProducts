@@ -1,7 +1,6 @@
-import Categories from "../../components/categories";
+import Categories from "../../components/categories/categories";
 
 const Home = () => {
-
     return <Categories />;
 };
 
