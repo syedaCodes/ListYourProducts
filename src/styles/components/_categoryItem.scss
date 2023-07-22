@@ -6,8 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 10s cubic-bezier(0.25, 0.45, 0.45, 0.95);
-    // transition: all .5s ease-in-out;
+    transition: background 10s cubic-bezier(0.25, 0.45, 0.45, 0.95);
     cursor: pointer;
 
     &.hats{
