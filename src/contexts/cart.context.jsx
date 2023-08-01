@@ -1,4 +1,53 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useReducer } from "react";
+import { createAction } from "../utils/reducer/reducer.utils";
+
+export const CartContext = createContext({
+    isCartOpen: false,
+    setIsCartOpen: () => {},
+    // a state to manage the list of items
+    cartItems: [],
+    // a state method to trigger when addToCart button is clicked
+    addItemToCart: () => {},
+    //remove item from cart
+    removeItemFromCart: () => {},
+    //delete item from cart
+    deleteItemFromCart: () => {},
+    count: 0,
+    totalPrice: 0,
+});
+
+const INITIAL_STATE = {
+    isCartOpen: false,
+    cartItems: [],
+    count: 0,
+    totalPrice: 0,
+};
+
+const CART_ACTION_TYPES = {
+    SET_CART_ITEMS: "SET_CART_ITEMS",
+    IS_CART_OPEN: "IS_CART_OPEN",
+};
+
+const cartReducer = (state, action) => {
+    const { type, payload } = action;
+
+    switch (type) {
+        case CART_ACTION_TYPES.SET_CART_ITEMS:
+            return {
+                ...state,
+                ...payload,
+            };
+
+        case CART_ACTION_TYPES.IS_CART_OPEN:
+            return {
+                ...state,
+                isCartOpen: payload,
+            };
+
+        default:
+            throw new Error(`Unhandled type ${type} in Cart Reducer`);
+    }
+};
 
 const deleteItem = (cartItems, deleteItem) =>
     cartItems?.filter((item) => item.id !== deleteItem.id);
@@ -41,56 +90,52 @@ const removeItemsFromCart = (cartItems, removeItem) => {
     }
 };
 
-export const CartContext = createContext({
-    isCartOpen: false,
-    setIsCartOpen: () => {},
-    // a state to manage the list of items
-    cartItems: [],
-    // a state method to trigger when addToCart button is clicked
-    addItemToCart: () => {},
-    //remove item from cart
-    removeItemFromCart: () => {},
-    //delete item from cart
-    deleteItemFromCart: () => {},
-    count: 0,
-    totalPrice: 0,
-});
-
 export const CartProvider = ({ children }) => {
-    const [isCartOpen, setIsCartOpen] = useState(false);
-    const [cartItems, setCartItems] = useState([]);
-    const [count, setCount] = useState(0);
-    const [totalPrice, setTotalPrice] = useState(0);
+    const [{ isCartOpen, cartItems, count, totalPrice }, dispatch] = useReducer(
+        cartReducer,
+        INITIAL_STATE
+    );
 
-    useEffect(() => {
-        const newCartCount = cartItems.reduce(
+    const setIsCartOpen = () => {
+        dispatch(createAction(CART_ACTION_TYPES.IS_CART_OPEN, !isCartOpen));
+    };
+
+    const updateCartItemsReducer = (updateCart) => {
+        const updateCount = updateCart.reduce(
             (total, cartItem) => total + cartItem.quantity,
             0
         );
-        setCount(newCartCount);
-    }, [cartItems]);
 
-    useEffect(() => {
-        const newTotalPrice = cartItems.reduce(
+        const updateTotal = updateCart.reduce(
             (total, cartItem) => total + cartItem.quantity * cartItem.price,
             0
         );
-        setTotalPrice(newTotalPrice);
-    }, [cartItems]);
+
+        dispatch(
+            createAction(CART_ACTION_TYPES.SET_CART_ITEMS, {
+                cartItems: updateCart,
+                totalPrice: updateTotal,
+                count: updateCount,
+            })
+        );
+    };
 
     const addItemToCart = (addProductToCart) => {
         //add product to cart - update cartItems
-        setCartItems(addToCartItems(cartItems, addProductToCart));
+        const addItem = addToCartItems(cartItems, addProductToCart);
+        updateCartItemsReducer(addItem);
     };
 
     const removeItemFromCart = (removeProduct) => {
         //remove product from the cart - update cartItems
-        setCartItems(removeItemsFromCart(cartItems, removeProduct));
+        const removeItem = removeItemsFromCart(cartItems, removeProduct);
+        updateCartItemsReducer(removeItem);
     };
 
-    const deleteItemFromCart = (deleteProduct) => {
+    const deleteItemFromCart = (del) => {
         //delete product
-        setCartItems(deleteItem(cartItems, deleteProduct));
+        const deleteProduct = deleteItem(cartItems, del);
+        updateCartItemsReducer(deleteProduct);
     };
 
     const value = {

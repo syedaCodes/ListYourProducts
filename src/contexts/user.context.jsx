@@ -3,13 +3,14 @@ import {
     createDocumentFromAuth,
     onAuthStateChangeListener,
 } from "../utils/firebase/firebase.utils";
+import { createAction } from "../utils/reducer/reducer.utils";
 
 export const UserContext = createContext({
     currentUser: null,
     setCurrentUser: () => null,
 });
 
-export const USER_ACTION_TYPES = {
+const USER_ACTION_TYPES = {
     SET_CURRENT_USER: "SET_CURRENT_USER",
 };
 
@@ -20,9 +21,6 @@ const INITIAL_STATE = {
 const userReducer = (state, action) => {
     const { type, payload } = action;
 
-    console.log(action);
-    console.log("dispatch");
-
     switch (type) {
         case USER_ACTION_TYPES.SET_CURRENT_USER:
             return {
@@ -30,7 +28,7 @@ const userReducer = (state, action) => {
                 currentUser: payload,
             };
         default:
-            throw new Error(`Unhandled type ${type} in userReducer`);
+            throw new Error(`Unhandled type ${type} in User Reducer`);
     }
 };
 
@@ -38,7 +36,7 @@ export const UserProvider = ({ children }) => {
     const [{ currentUser }, dispatch] = useReducer(userReducer, INITIAL_STATE);
 
     const setCurrentUser = (user) => {
-        dispatch({ type: USER_ACTION_TYPES.SET_CURRENT_USER, payload: user });
+        dispatch(createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user));
     };
 
     const value = { currentUser, setCurrentUser };

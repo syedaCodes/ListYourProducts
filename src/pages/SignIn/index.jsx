@@ -35,7 +35,7 @@ const SignIn = () => {
         } catch (error) {
             switch (error.code) {
                 case "auth/wrong-password":
-                    alert("incorrect password for email");
+                    alert("incorrect password");
                     break;
 
                 case "auth/user-not-found":
