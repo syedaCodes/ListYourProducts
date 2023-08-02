@@ -1,9 +1,9 @@
-import { useContext } from "react";
-import { CategoriesContext } from "../../contexts/categories.context";
 import CategoriesPreview from "../../components/categories/categoriesPreview";
+import { useSelector } from "react-redux";
+import { getCategoriesMapSelector } from "../../store/categories/categories.selector";
 
 const Categories = () => {
-    const { categoriesMap } = useContext(CategoriesContext);
+    const categoriesMap = useSelector(getCategoriesMapSelector);
     return (
         <>
             {/* categoriesMap is an object that has titles holding arrays {title: [], title: []} */}
