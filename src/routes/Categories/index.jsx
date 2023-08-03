@@ -1,9 +1,10 @@
 import CategoriesPreview from "../../components/categories/categoriesPreview";
 import { useSelector } from "react-redux";
-import { getCategoriesMapSelector } from "../../store/categories/categories.selector";
+import { selectorCategoriesMap } from "../../store/categories/categories.selector";
 
 const Categories = () => {
-    const categoriesMap = useSelector(getCategoriesMapSelector);
+    const categoriesMap = useSelector(selectorCategoriesMap);
+
     return (
         <>
             {/* categoriesMap is an object that has titles holding arrays {title: [], title: []} */}

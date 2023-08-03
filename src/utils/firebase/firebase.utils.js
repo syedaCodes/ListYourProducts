@@ -16,7 +16,8 @@ import {
     collection, //to create a collection in firestore
     writeBatch,
     getDocs,
-    query, //the name states to write to the collection
+    query,
+    // DocumentSnapshot, //the name states to write to the collection
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -76,13 +77,8 @@ export const getCategoriesAndDocuments = async () => {
 
     const querySnapshot = await getDocs(q);
     //querySnapshot is the response that has the docs array
-    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-        const { title, items } = docSnapshot.data();
-        acc[title.toLowerCase()] = items;
-        return acc;
-    }, {});
 
-    return categoryMap;
+    return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 };
 
 export const createDocumentFromAuth = async (
