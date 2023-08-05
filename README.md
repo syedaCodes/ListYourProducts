@@ -1,6 +1,6 @@
 # Online Clothing Store - E-commerce Project
 
-Welcome to the Online Clothing Store, an e-commerce project built using React, Redux, Redux Thunk, logger, CSS, and connected to Firebase. This project allows users to browse different categories of clothing, add products to their cart, and perform basic CRUD operations for managing an online store.
+Welcome to the Online Clothing Store, an e-commerce project built using React, Redux, Redux Thunk, logger, SCSS, and connected to Firebase. This project allows users to browse different categories of clothing, add products to their cart, and perform basic CRUD operations for managing an online store.
 
 ## Installation
 
@@ -64,7 +64,7 @@ I welcome contributions to enhance the Online Clothing Store. If you want to con
 
 ## Contact
 
-If you have any questions, feedback, or issues related to the Online Clothing Store, feel free to contact us via email at [syeda](mailto:syedaa.codes@gmail.com) or through GitHub issues.
+If you have any questions, feedback, or issues related to the Online Clothing Store, feel free to contact me via email at [syeda](mailto:syedaa.codes@gmail.com) or through GitHub issues.
 
 ## Note
 
