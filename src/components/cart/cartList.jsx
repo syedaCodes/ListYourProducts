@@ -1,15 +1,16 @@
-import { useContext, useRef } from "react";
+import { useRef } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Button from "../../layouts/Button";
 import useScrollbar from "../../hooks/useScrollbar";
 import CartListItem from "./cartListItem";
-import { CartContext } from "../../contexts/cart.context";
-import { useNavigate } from "react-router-dom";
+import { selectCartItems } from "../../store/cart/cart.selector";
 
 const CartList = () => {
     const navigate = useNavigate();
 
     const dropdownRef = useRef(null);
-    const { cartItems } = useContext(CartContext);
+    const cartItems = useSelector(selectCartItems);
     const hasScrollbar = useScrollbar(dropdownRef, cartItems?.length);
 
     const navigateToCheckout = () => {
