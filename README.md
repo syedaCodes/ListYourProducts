@@ -64,7 +64,7 @@ I welcome contributions to enhance the Online Clothing Store. If you want to con
 
 ## Contact
 
-If you have any questions, feedback, or issues related to the Online Clothing Store, feel free to contact us via email at [syeda](mailto:syedaa.codes@gmail.com) or through GitHub issues.
+If you have any questions, feedback, or issues related to the Online Clothing Store, feel free to contact me via email at [syeda](mailto:syedaa.codes@gmail.com) or through GitHub issues.
 
 ## Note
 
