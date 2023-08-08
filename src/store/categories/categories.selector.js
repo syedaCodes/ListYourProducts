@@ -17,6 +17,11 @@ export const selectorCategoriesMap = createSelector(
         }, {})
 );
 
+export const selectorCategoriesIsLoading = createSelector(
+    [selectCategoryReducer],
+    (categoriesSlice) => categoriesSlice.isLoading
+);
+
 // const cacheObj = {};
 // ---------------------------------------------------------- Waiting for review
 // export const selectorCategoriesMap = (state) => {
