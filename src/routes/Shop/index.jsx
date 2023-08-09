@@ -3,13 +3,13 @@ import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Categories from "../Categories";
 import AllCategories from "../AllCategories";
-import { fetchCategoriesAsync } from "../../store/categories/categories.action";
+import { onFetchCategories } from "../../store/categories/categories.saga";
 
 const Shop = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchCategoriesAsync());
+        dispatch(onFetchCategories());
     }, []);
 
     return (
