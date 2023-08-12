@@ -35,7 +35,7 @@ const composedEnhancers = composeEnhancer(applyMiddleware(...middleWares)); //en
 //action -> middleware runs before action hits -> reducers
 export const store = createStore(
     persistedReducer,
-    undefined,
+    // undefined,
     composedEnhancers
 ); //undefined for an optional parameter - additional default state for testing made easy
 
