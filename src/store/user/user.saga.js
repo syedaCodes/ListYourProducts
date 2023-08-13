@@ -8,7 +8,6 @@ import {
 import { signInFailed, signInSuccess } from "./user.action";
 
 export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
-    console.log(userAuth);
     try {
         const userSnapshot = yield call(
             createDocumentFromAuth,
@@ -24,15 +23,13 @@ export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
 }
 
 export function* isUserAuthWithEmail({ payload: { email, password } }) {
-    console.log(email, password);
     try {
-        const { userAuth } = yield call(
+        const { user } = yield call(
             signInUserAuthWithEmailandPassword,
             email,
             password
         );
-        console.log(userAuth);
-        yield call(getSnapshotFromUserAuth, userAuth);
+        yield call(getSnapshotFromUserAuth, user);
     } catch (error) {
         yield put(signInFailed(error));
     }
