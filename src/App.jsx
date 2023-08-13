@@ -1,16 +1,19 @@
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import Navigation from "./routes/Navigation/Navigation";
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Shop from "./routes/Shop";
 import Checkout from "./pages/Checkout";
-import { getCurrentUser } from "./utils/firebase/firebase.utils";
+import { checkUserSession } from "./store/user/user.action";
 
 const App = () => {
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        getCurrentUser();
+        dispatch(checkUserSession());
     }, []);
 
     return (
