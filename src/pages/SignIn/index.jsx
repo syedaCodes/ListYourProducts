@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import CustomInputField from "../../layouts/CustomInputField";
 import Button from "../../layouts/Button";
-import { signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
-import { emailSignInStart } from "../../store/user/user.action";
+import {
+    emailSignInStart,
+    googleSignInStart,
+} from "../../store/user/user.action";
 
 const defaultFields = {
     email: "",
@@ -53,8 +55,8 @@ const SignIn = () => {
         setFormFields({ ...formFields, [name]: value });
     };
 
-    const logGoogleUser = async () => {
-        const response = await signInWithGooglePopup();
+    const logGoogleUser = () => {
+        const response = dispatch(googleSignInStart());
         response?._tokenResponse?.emailVerified && navigate("/");
     };
 
