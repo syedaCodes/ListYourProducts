@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import CustomInputField from "../../layouts/CustomInputField";
 import Button from "../../layouts/Button";
 import {
-    signInUserAuthWithEmailandPassword,
-    signInWithGooglePopup,
-} from "../../utils/firebase/firebase.utils";
+    emailSignInStart,
+    googleSignInStart,
+} from "../../store/user/user.action";
 
 const defaultFields = {
     email: "",
@@ -13,6 +14,8 @@ const defaultFields = {
 };
 
 const SignIn = () => {
+    const dispatch = useDispatch();
+
     const [formFields, setFormFields] = useState(defaultFields);
 
     const { email, password } = formFields;
@@ -23,13 +26,13 @@ const SignIn = () => {
 
     const resetFormFields = () => setFormFields(defaultFields);
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
         if (!formFields) return;
 
         try {
-            await signInUserAuthWithEmailandPassword(email, password);
+            dispatch(emailSignInStart(email, password));
             resetFormFields();
             navigate("/");
         } catch (error) {
@@ -52,8 +55,8 @@ const SignIn = () => {
         setFormFields({ ...formFields, [name]: value });
     };
 
-    const logGoogleUser = async () => {
-        const response = await signInWithGooglePopup();
+    const logGoogleUser = () => {
+        const response = dispatch(googleSignInStart());
         response?._tokenResponse?.emailVerified && navigate("/");
     };
 

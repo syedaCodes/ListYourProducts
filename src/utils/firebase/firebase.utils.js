@@ -71,8 +71,8 @@ export const addCollectionAndDocuments = async (
     await batch.commit();
 };
 
-export const getCategoriesAndDocuments = async () => {
-    const collectionRef = collection(db, "categories");
+export const getCategoriesAndDocuments = async (label) => {
+    const collectionRef = collection(db, label);
     const q = query(collectionRef);
 
     const querySnapshot = await getDocs(q);
@@ -111,7 +111,7 @@ export const createDocumentFromAuth = async (
     }
 
     //if user data exists
-    return userDocRef;
+    return userSnapshot;
 };
 
 export const createUserAuthWithEmailandPassword = async (email, password) => {
@@ -131,3 +131,12 @@ export const signOutUser = async () => await signOut(auth);
 //everytime auth changes the callback is called
 export const onAuthStateChangeListener = (callback) =>
     onAuthStateChanged(auth, callback);
+
+export const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+        const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
+            unsubscribe();
+            resolve(userAuth);
+        });
+    });
+};

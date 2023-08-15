@@ -1,10 +1,12 @@
 import { useState } from "react";
-import {
-    createDocumentFromAuth,
-    createUserAuthWithEmailandPassword,
-} from "../../utils/firebase/firebase.utils";
+// import {
+//     createDocumentFromAuth,
+//     createUserAuthWithEmailandPassword,
+// } from "../../utils/firebase/firebase.utils";
 import CustomInputField from "../../layouts/CustomInputField";
 import Button from "../../layouts/Button";
+import { useDispatch } from "react-redux";
+import { createUser } from "../../store/user/user.action";
 
 const defaultFields = {
     displayName: "",
@@ -14,6 +16,8 @@ const defaultFields = {
 };
 
 const SignUp = () => {
+    const dispatch = useDispatch();
+
     const [formFields, setFormFields] = useState(defaultFields);
 
     const { displayName, email, password, confirmPassword } = formFields;
@@ -29,25 +33,19 @@ const SignUp = () => {
             alert("passwords do not match");
         }
 
-        try {
-            //pass credentials for authentication and collect user object
-            const { user } = await createUserAuthWithEmailandPassword(
-                email,
-                password
-            );
+        if (email && password && displayName) {
+            try {
+                dispatch(createUser(email, password, displayName));
+                //clean up form
+                resetFormFields();
 
-            //create a record in the firestore database
-            await createDocumentFromAuth(user, { displayName });
-
-            //clean up form
-            resetFormFields();
-
-            alert("Your account has been created!");
-        } catch (error) {
-            if (error.code === "auth/email-already-in-use") {
-                alert("email already in use");
-            } else {
-                console.log("user creation encountered an error", error);
+                alert("Your account has been created!");
+            } catch (error) {
+                if (error.code === "auth/email-already-in-use") {
+                    alert("email already in use");
+                } else {
+                    console.log("user creation encountered an error", error);
+                }
             }
         }
     };
