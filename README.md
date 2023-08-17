@@ -1,6 +1,6 @@
 # Online Clothing Store - E-commerce Project
 
-Welcome to the Online Clothing Store, an e-commerce project built using React, Redux, Redux Thunk, logger, SCSS, and connected to Firebase. This project allows users to browse different categories of clothing, add products to their cart, and perform basic CRUD operations for managing an online store.
+Welcome to the Online Clothing Store, an e-commerce project built using React, Redux, SCSS, and connected to Firebase. This project allows users to browse different categories of clothing, add products to their cart, and perform basic CRUD operations for managing an online store.
 
 ## Installation
 
@@ -29,7 +29,7 @@ To use the Online Clothing Store, follow these instructions:
 
 1. Launch the application:
 
-    `npm start`
+    `npm run dev`
 
 2. Browse the homepage to view the available categories of clothing.
 
@@ -37,9 +37,9 @@ To use the Online Clothing Store, follow these instructions:
 
 4. To add a product to the cart, click the "Add to Cart" button on the product page.
 
-5. Visit the cart page to view the products added to your cart. You can adjust the quantity of items and remove products from the cart.
+5. Visit the checkout page to view the products added to your cart. You can adjust the quantity of items and remove products from the cart.
 
-6. The cart will automatically calculate the total price of all the products in your cart.
+6. The cart will calculate the total price of all the products in your cart.
 
 ## Features
 
@@ -49,6 +49,16 @@ The Online Clothing Store provides the following features:
 -   Update/ Add and remove products to/from the cart.
 -   Adjust the quantity of items in the cart.
 -   Calculate the total price of the products in the cart.
+
+## Release Notes
+
+### Version v1.0-saga
+
+In [Release v1.0-saga](https://github.com/syedaCodes/onlineClothingShop/releases/tag/v1.0-saga), the `redux-saga` middleware was introduced to manage asynchronous operations and complex workflows within Redux-based data management system. This release is focused on optimizing side effects and ensuring a more structured and maintainable codebase.
+
+For more detailed information about the enhancements brought by `redux-saga` in this release, please refer to the [Release v1.0-saga Notes](https://github.com/syedaCodes/onlineClothingShop/releases/tag/v1.0-saga).
+
+Next Steps: To continue to evolve the Online Clothing Store application, will transition to Redux Toolkit in the upcoming release to further simplify the state management approach.
 
 ## Contributing
 
