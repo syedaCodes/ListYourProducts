@@ -7,13 +7,24 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Shop from "./routes/Shop";
 import Checkout from "./pages/Checkout";
-import { checkUserSession } from "./store/user/user.action";
+import {
+    createDocumentFromAuth,
+    onAuthStateChangeListener,
+} from "./utils/firebase/firebase.utils";
+import { setCurrentUser } from "./store/user/user.action";
 
 const App = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(checkUserSession());
+        const unsubscribe = onAuthStateChangeListener((user) => {
+            if (user) {
+                createDocumentFromAuth(user); //if not null then we want to create the doc
+            }
+            dispatch(setCurrentUser(user)); //here user could be null or an object
+        });
+
+        return unsubscribe;
     }, []);
 
     return (
