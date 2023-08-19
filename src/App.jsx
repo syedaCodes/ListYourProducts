@@ -11,7 +11,7 @@ import {
     createDocumentFromAuth,
     onAuthStateChangeListener,
 } from "./utils/firebase/firebase.utils";
-import { setCurrentUser } from "./store/user/user.action";
+import { setCurrentUser } from "./store/user/user.reducer";
 
 const App = () => {
     const dispatch = useDispatch();
@@ -21,7 +21,11 @@ const App = () => {
             if (user) {
                 createDocumentFromAuth(user); //if not null then we want to create the doc
             }
-            dispatch(setCurrentUser(user)); //here user could be null or an object
+            const userVerified =
+                user &&
+                (({ accessToken, email }) => ({ accessToken, email }))(user);
+
+            dispatch(setCurrentUser(userVerified)); //here user could be null or an object
         });
 
         return unsubscribe;

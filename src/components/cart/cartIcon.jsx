@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import Icon from "../../assets/sprite.svg";
-import { setIsCartOpen } from "../../store/cart/cart.actions";
+import { setIsCartOpen } from "../../store/cart/cart.reducer";
 import { cartOpenState, selectCartCount } from "../../store/cart/cart.selector";
 
 const CartIcon = () => {
