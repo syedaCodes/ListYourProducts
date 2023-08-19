@@ -1,20 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
-import {
-    addItemToCart,
-    deleteItemFromCart,
-    removeItemFromCart,
-} from "../../store/cart/cart.actions";
-import { selectCartItems } from "../../store/cart/cart.selector";
+import { useDispatch } from "react-redux";
+import { addItem, deleteItem, removeItem } from "../../store/cart/cart.reducer";
 
 const CheckoutItems = ({ product }) => {
     const dispatch = useDispatch();
-    const cartItems = useSelector(selectCartItems);
 
     const { name, imageUrl, price, quantity } = product;
 
-    const addItem = () => dispatch(addItemToCart(cartItems, product));
-    const removeItem = () => dispatch(removeItemFromCart(cartItems, product));
-    const deleteItem = () => dispatch(deleteItemFromCart(cartItems, product));
+    const addItemToCart = () => dispatch(addItem(product));
+    const removeItemFromCart = () => dispatch(removeItem(product));
+    const deleteItemFromCart = () => dispatch(deleteItem(product));
 
     return (
         <tr>
@@ -23,17 +17,23 @@ const CheckoutItems = ({ product }) => {
             </td>
             <td>{name}</td>
             <td>
-                <button className="btn btn-tertiary" onClick={removeItem}>
+                <button
+                    className="btn btn-tertiary"
+                    onClick={removeItemFromCart}
+                >
                     &lt;
                 </button>
                 {quantity}
-                <button className="btn btn-tertiary" onClick={addItem}>
+                <button className="btn btn-tertiary" onClick={addItemToCart}>
                     &gt;
                 </button>
             </td>
             <td>${price}</td>
             <td>
-                <button className="btn btn-tertiary" onClick={deleteItem}>
+                <button
+                    className="btn btn-tertiary"
+                    onClick={deleteItemFromCart}
+                >
                     &#9587;
                 </button>
             </td>
