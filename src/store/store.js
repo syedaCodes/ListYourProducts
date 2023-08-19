@@ -8,7 +8,11 @@ const middleWares = [
 
 export const store = configureStore({
     reducer: rootReducer,
-    middleWares,
+    middleware: middleWares,
+    // middleware: (getDefaultMiddleware) =>
+    //     getDefaultMiddleware({
+    //         serializableCheck: false,
+    //     }).concat(middleWares),
 });
 
 // import { compose, createStore, applyMiddleware } from "redux";
